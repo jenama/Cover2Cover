@@ -95,6 +95,7 @@ class Login extends Component {
     render() {
         return (
             <div className={'authBox'}>
+
                 <img src={background} alt='Background Shape' id='bg' />
                 <div className={'leftBox'}>
                     <div className={'bgColor'} />
@@ -140,6 +141,7 @@ class Login extends Component {
 
                         <div className={'borderBox'}>
                             <div className={'line'} />
+
                             {/* <div className={'text2 or'}>OR</div> */}
                         </div>
                         <div className={'socialMediaBox'}>
@@ -151,6 +153,7 @@ class Login extends Component {
                                     </Button>
                             </div>
                             {/* <div className={'icAuth google'}> <img alt='google' src={GoogleIcon}></img></div>
+
                             <div className={'icAuth facebook'}><img alt='facebook' src={FacebookIcon}></img></div>
                             <div className={'icAuth twitter'}><img alt='twitter' src={TwitterIcon}></img></div> */}
                         </div>
