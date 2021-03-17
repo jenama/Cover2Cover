@@ -4,7 +4,7 @@
   --sight: #800080;
   --white: #fdfdfd;
   --dark: #181717;
-  --nav-text-primary: #b6b6b6;
+  --nav-text-primary: #7e7676;
   --nav-text-secondary: #ececec;
   --nav-bg-primary: #23232e;
   --nav-bg-secondary: #141418;
@@ -379,7 +379,7 @@ p {
   transition: top .6s;
   background: rgba(0, 0, 0, 0.6);
   padding: 10px;
-  z-index: 10000;
+  z-index: 10;
   overflow: hidden;
 }
 
@@ -873,6 +873,7 @@ p {
   font-size: 30px;
   text-decoration: none;
   transition: 0.5s;
+  z-index: 1;
 }
 
 .chat:hover {
@@ -912,13 +913,31 @@ p {
   color: var(--primary)
 }
 
+.storyBodyScroll {
+  margin-left:auto; 
+  margin-right:auto; 
+  width: 100%; 
+  height: 212px; 
+  overflow-y: scroll;
+}
+
+.storyBody {
+  float:left;
+  color: #666666;
+  width: 100%;
+  font-size: 14px; 
+  font-weight: bold; 
+  border-right: thin dotted #666666; 
+  line-height: 18px;
+}
+
 .story-navigation {
   position: absolute;
   bottom: 50px;
   left: 0;
   width: 100%;
   text-align: center;
-  z-index: 1000;
+  /* z-index: 1; */
 }
 
 .story-navigation h1 {
@@ -977,6 +996,195 @@ nav .story-navigation a:nth-child(4) {
 
 .story-card-left .clip {
   clip-path: url('#clip-polygon')
+}
+
+.circle {
+  position: relative;
+  width: 45px;
+  height: 45px;
+  bottom: 120px;
+  left: 14px;
+  background: linear-gradient(#33ccff, #ff0066);
+  border-radius: 50%;
+  animation: animate 2.0s linear infinite;
+}
+
+@keyframes animate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.circle::after, .circle::before {
+  content: '';
+  position: absolute;
+  height: 55%;
+  width: 55%;
+  bottom: 10px;
+  left: 10px;
+  background-image: linear-gradient(120deg, white, white);
+  border-radius: 50%;
+}
+
+.circle span {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(#33ccff, #ff0066);
+  border-radius: 50%;
+}
+
+.circle span:nth-child(1){
+  filter: blur(5px);
+}
+
+.circle span:nth-child(2){
+  filter: blur(10px);
+}
+
+.circle span:nth-child(3){
+  filter: blur(20px);
+}
+
+.circle span:nth-child(4){
+  filter: blur(55px);
+}
+
+/* Modal CSS */
+
+.modal-wrapper {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  height: 100%;
+  background: rgba(40, 50, 80, 0.8);
+  padding: 0 20px;
+  transform: translateY(-50%);
+  text-align: center;
+}
+
+.modal-wrapper h2 {
+  margin-top: 25px;
+}
+
+.modal-info-form {
+  max-width: 700px;
+  margin: 10px auto;
+  padding: 30px;
+  border-radius: 5px;
+  display: flex;
+}
+
+.modal-input-fields {
+  display: flex;
+  flex-direction: column;
+  margin-right: 4%;
+}
+
+.modal-input-fields input{
+  font-size: .9em;
+}
+
+.modal-input-fields,
+.modal-msg {
+  width: 48%;
+}
+
+.modal-msg {
+  height: 350px;
+}
+
+.modal-input-fields .modal-input,
+.modal-msg textarea {
+  margin: 10px 0;
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid var(--white);
+  padding: 10px;
+  color: var(--white);
+  width: 100%;
+}
+
+.modal-msg textarea {
+  height: 100%;
+  font-size: .9em;
+}
+
+.upload-btn {
+  color: rgb(168, 161, 161);
+  size: 20px;
+}
+
+.comments  {
+ text-align: center;
+ 
+}
+
+.statement {
+  
+  width: 300px;
+  height: 100px;
+  margin: 5px;
+  padding: 10px;
+  border: 1px solid grey;
+  box-sizing: border-box;
+}
+
+.comment-form {
+  text-align: center;
+}
+
+.comment-form textarea {
+  width: 60%;
+  height: 50%;
+  padding: 5px;
+  /* border: 1px solid #ccc; */
+  border-radius: 4px;
+  resize: vertical;
+}
+
+.comment-form input[type=text], input[type=number] {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+} 
+
+.comment-form input[type=submit] {
+  background-color: grey;
+  color: white;
+  padding: 5px ;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  /* float: right; */
+}
+
+::-webkit-input-placeholder {
+  color: var(--nav-text-primary);
+}
+
+::-moz-input-placeholder {
+  color: var(--nav-text-primary);
+}
+
+::-ms-input-placeholder {
+  color: var(--nav-text-primary);
+}
+
+.modal-btn {
+  background: #39b7dd;
+  width: 100%;
+  text-align: center;
+  padding: 15px;
+  border-radius: 5px;
+  color: var(--white);
+  cursor: pointer;
+  text-transform: uppercase;
 }
 
 /* Reactive Media Queries */
@@ -1043,6 +1251,8 @@ nav .story-navigation a:nth-child(4) {
 
   
 }
+
+
 
 @media screen and (min-width: 1200px) {
   .masonry-holder{
