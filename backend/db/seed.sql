@@ -1,10 +1,11 @@
-DROP DATABASE IF EXISTS stories;
+-- DROP DATABASE IF EXISTS stories;
 
-CREATE DATABASE stories;
+-- CREATE DATABASE stories;
 
-\c stories;
+-- \c stories;
 
 
+DROP TABLE IF exists users;
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     username VARCHAR NOT NULL UNIQUE,
@@ -16,11 +17,13 @@ CREATE TABLE users (
     
 );
 
+DROP TABLE IF exists questions;
 CREATE TABLE questions (
     id SERIAL PRIMARY KEY,
     starter VARCHAR
 );
 
+DROP TABLE IF exists posts;
 CREATE TABLE posts (
     id SERIAL PRIMARY KEY,
     first_question INT REFERENCES questions(id),
@@ -30,6 +33,7 @@ CREATE TABLE posts (
     caption VARCHAR
 );
 
+DROP TABLE IF exists user_questions;
 CREATE TABLE user_questions (
     id SERIAL PRIMARY KEY,
     story_id INT NOT NULL REFERENCES posts(id),
@@ -47,12 +51,14 @@ CREATE TABLE user_questions (
 --     followup_answer VARCHAR
 -- );
 
+DROP TABLE IF exists likes;
 CREATE TABLE likes(
     id SERIAL PRIMARY KEY,
     post_id INT REFERENCES posts(id),
     liker_name VARCHAR REFERENCES users(username)
 );
 
+DROP TABLE IF exists comments;
 CREATE TABLE comments (
     id SERIAL PRIMARY KEY,
     commentors_name VARCHAR REFERENCES users(username),
@@ -60,11 +66,13 @@ CREATE TABLE comments (
     c_post_id INT REFERENCES posts(id)
 );
 
+DROP TABLE IF exists tags;
 CREATE TABLE tags (
    id SERIAL PRIMARY KEY,
    tag_name VARCHAR UNIQUE
 );
 
+DROP TABLE IF exists post_tag;
 CREATE TABLE post_tag (
    id SERIAL PRIMARY KEY,
    tag_id INT REFERENCES tags(id),

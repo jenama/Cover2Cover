@@ -44,9 +44,10 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.use(cors());
 app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser("NOT_A_GOOD_SECRET"));
+app.use(express.static(path.join(__dirname, '../frontend/build')))
 app.use(express.static(path.join(__dirname, '../backend/public')));
 
 app.use(session({
@@ -100,5 +101,9 @@ app.post('/upstream', upstream.single ("image"), (req,res,next) => {
         message: "file uploaded"
  })
  })
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
+});
  
 module.exports = app;

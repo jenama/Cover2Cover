@@ -1,0 +1,22 @@
+{
+  "name": "Cover2Cover",
+  "version": "1.0.0",
+  "description": "*Social Media site focused on sharing user experiences through stories and questions*",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd backend && npm start",
+    "heroku-prebuild": "cd backend && npm install && cd ../frontend && npm install && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jenama/Cover2Cover.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jenama/Cover2Cover/issues"
+  },
+  "homepage": "https://github.com/jenama/Cover2Cover#readme"
+}
