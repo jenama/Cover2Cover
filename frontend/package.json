@@ -49,6 +49,6 @@
   "proxy": "http://localhost:3100",
   "devDependencies": {
     "babel-plugin-import": "^1.13.0",
-    "file-loader": "^6.0.0"
+    "file-loader": "^6.2.0"
   }
 }
