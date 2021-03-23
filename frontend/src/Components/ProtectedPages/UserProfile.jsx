@@ -15,7 +15,7 @@ Modal.setAppElement('#root')
 
 class UserProfile extends React.Component {
     constructor(props) {
-        console.log('props????:', props)
+       
         super(props)
         this.state = {
             avatar: '',
@@ -34,7 +34,7 @@ class UserProfile extends React.Component {
             questionChoice: '',
             questionId: ''
         }
-        console.log('state????:', this.state)
+        
 
     }
 
