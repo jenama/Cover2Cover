@@ -46,9 +46,9 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser("NOT_A_GOOD_SECRET"));
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../frontend/build')))
-app.use(express.static(path.join(__dirname, '../backend/public')));
+app.use(express.static(path.join(__dirname, '/public')));
 
 app.use(session({
     secret: "NOT_A_GOOD_SECRET",
@@ -70,10 +70,7 @@ app.use('/userquestions', userQuestions)
 // app.use('/followupquestions', followUpQuestions);
 
 app.post('/upload', upload.single('avatar'), async(req, res,next) => {
-    console.log('req.file:', req.file)
-    console.log('req.body:', req.body)
     let userPic = req.file.path
-    console.log('user pic', userPic)
     let imgURL = `http://localhost:3100/${userPic.replace('public/', '')}`;
     if (!req.file) {
     console.log("No file received");
@@ -87,9 +84,6 @@ app.post('/upload', upload.single('avatar'), async(req, res,next) => {
         msg: `File has been uploaded`
       })
       console.log('file received');
-      // return res.send({
-      //   success: true
-      // })
     }
    
 })

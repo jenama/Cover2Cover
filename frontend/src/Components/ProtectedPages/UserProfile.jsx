@@ -69,11 +69,11 @@ class UserProfile extends React.Component {
     }
 
     addDefaultSrc(ev) {
-        ev.target.src = questionAvatar
+        ev.target.src = ''
     }
 
     addDefaultStoryImg(ev) {
-        ev.target.src = staticStoryImg
+        ev.target.src = 'https://ak.picdn.net/shutterstock/videos/1005609832/thumb/12.jpg?ip=x480'
     }
 
     handleFileInput = (e) => {
