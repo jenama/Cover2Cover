@@ -18,6 +18,6 @@
   "bugs": {
     "url": "https://github.com/jenama/Cover2Cover/issues"
   },
-  "homepage": "https://github.com/jenama/Cover2Cover#readme"
-  
+  "homepage": "https://github.com/jenama/Cover2Cover#readme",
+  "dependencies": {}
 }
