@@ -8,10 +8,6 @@ import { withRouter } from 'react-router-dom';
 import { Button } from "../Support Files/Button"
 
 import background from '../../img/bg-shape.svg';
-// import GoogleIcon from '../../img/GoogleIcon.png';
-// import FacebookIcon from '../../img/facebookIcon.png';
-// import TwitterIcon from '../../img/TwitterIcon.png';
-
 
 class Login extends Component {
     state = {
@@ -152,10 +148,6 @@ class Login extends Component {
                                         buttonSize="btn--medium">Back
                                     </Button>
                             </div>
-                            {/* <div className={'icAuth google'}> <img alt='google' src={GoogleIcon}></img></div>
-
-                            <div className={'icAuth facebook'}><img alt='facebook' src={FacebookIcon}></img></div>
-                            <div className={'icAuth twitter'}><img alt='twitter' src={TwitterIcon}></img></div> */}
                         </div>
                     </div>
                 </div>
