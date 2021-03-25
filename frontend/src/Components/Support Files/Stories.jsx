@@ -1,6 +1,4 @@
 import React from 'react';
-// import sun from '../../img/sun-icon.svg';
-// import snow from '../../img/snow-icon.svg';
 
 const Stories = (props) => {
     return (

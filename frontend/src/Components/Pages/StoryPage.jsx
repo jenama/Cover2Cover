@@ -6,8 +6,6 @@ import { login } from '../../Actions/authActions';
 
 import PropTypes from 'prop-types';
 import Navbar from '../Support Files/Navbar';
-import questionAvatar from '../../img/QuestionAvatar.png';
-import staticStoryImg from '../../img/Unknown_location.png';
 import Modal from 'react-modal';
 
 //will need props value of current story clicked on
@@ -18,7 +16,7 @@ Modal.setAppElement('#root')
 
 class StoryPage extends Component {
     constructor(props) {
-        console.log('storypage state????:', props)
+        
         super(props)
         this.state = {
             questionmsg: '',
@@ -109,13 +107,13 @@ class StoryPage extends Component {
         this.populateSelect();
     }
 
+      
     addDefaultSrc(ev) {
-        const { storyProps } = this.props.location.state
-        ev.target.src = `https://api.adorable.io/avatars/285/${storyProps.p_username}.png`
+        ev.target.src = `http://a.wordpress.com/avatar/unknown-128.jpg`
     }
 
     addDefaultAvatar(ev) {
-        ev.target.src = ''
+        ev.target.src = 'http://a.wordpress.com/avatar/unknown-128.jpg'
     }
 
     addDefaultStoryImg(ev) {

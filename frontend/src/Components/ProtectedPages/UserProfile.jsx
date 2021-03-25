@@ -7,15 +7,13 @@ import { Button } from '../Support Files/Button'
 import axios from 'axios';
 // import Post from '../Support Files/posts';
 import { login } from '../../Actions/authActions';
-import questionAvatar from '../../img/QuestionAvatar.png'
-import staticStoryImg from '../../img/Unknown_location.png';
 import Modal from 'react-modal'
 
 Modal.setAppElement('#root')
 
 class UserProfile extends React.Component {
     constructor(props) {
-        console.log('props????:', props)
+       
         super(props)
         this.state = {
             avatar: '',
@@ -34,7 +32,7 @@ class UserProfile extends React.Component {
             questionChoice: '',
             questionId: ''
         }
-        console.log('state????:', this.state)
+        
 
     }
 
