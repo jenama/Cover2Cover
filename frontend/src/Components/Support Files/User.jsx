@@ -14,30 +14,23 @@ class User extends React.Component {
     }
 
     handleFileInput = (e) => {
-
         this.setState({
             imgFile: e.target.files[0]
         })
-        console.log('check file:', e.target.files[0])
-        // console.dir(e.target)
     }
 
     handleFormSubmit = async(e) => {
         e.preventDefault()
         const data = new FormData()
         data.append('avatar', this.state.imgFile)
-        
-        console.log('data!:', this.state.imgFile )
         try {
-            const response = await axios.post('http://localhost:3100/upload', data)
+            const response = await axios.post('api/upload', data)
             console.log('submit:', response.data)
             if (this.props.state.avatar === null) {
                 this.setState({
                     imgURL: response.data.imgURL,
                 })
             } 
-            
-            // this.setAvatar(response.data.imgURL)
         } catch (error) {
             console.log('error', error)
         }

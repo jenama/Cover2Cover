@@ -40,7 +40,7 @@ class UserProfile extends React.Component {
     async componentDidMount() {
         const id = this.props.id
         try {
-            let url = `http://localhost:3100/users/${id}`
+            let url = `api/users/${id}`
             const userPost = await axios.get(url)
             this.setState({
                 feeds: userPost.data.payload,
@@ -51,7 +51,7 @@ class UserProfile extends React.Component {
             console.log('ERROR', error)
         }
 
-        let questionResponse = await axios.get('/questions')
+        let questionResponse = await axios.get('api/questions')
 
         let questionArray = []
 
@@ -255,10 +255,7 @@ class UserProfile extends React.Component {
 
                     </div>
                 </div>
-                {/* <br></br>
-                <div className='user-posts'>
-                <Post />
-            </div> */}
+             
 
                 <Modal className="modal-wrapper"
                     isOpen={modalIsOpen}

@@ -62,7 +62,7 @@ class StoryPage extends Component {
         console.log("Redux props", this.props.username);
 
         try {
-            let followUpCovers = await axios.get('/userquestions/all/' + storyProps.id);
+            let followUpCovers = await axios.get(`api/userquestions/all/` + storyProps.id);
             this.setState({
                 followUpData: followUpCovers.data.payload
             });
@@ -79,7 +79,7 @@ class StoryPage extends Component {
 
         try {
             let blogs = await axios.get('/users/user/' + storyProps.p_username);
-            let firstquestion = await axios.get('/blog/firstquestion/' + storyProps.id);
+            let firstquestion = await axios.get(`api/blog/firstquestion/` + storyProps.id);
             console.log('The First Ever question', firstquestion.data.payload.starter)
 
             this.setState({
@@ -92,7 +92,7 @@ class StoryPage extends Component {
             console.log("ERROR:", err);
         }
 
-        let questionResponse = await axios.get('/userquestions/all/' + storyProps.id)
+        let questionResponse = await axios.get('api/userquestions/all/' + storyProps.id)
 
         let questionArray = []
 
@@ -154,7 +154,7 @@ class StoryPage extends Component {
         const { storyProps } = this.props.location.state
 
         try {
-            const res = await axios.post(`/userquestions/${storyProps.id}`,
+            const res = await axios.post(`api/userquestions/${storyProps.id}`,
                 {
                     storyid: storyProps.id,
                     new_question: questionmsg,
@@ -174,17 +174,12 @@ class StoryPage extends Component {
     handleResponseSubmit = async (event) => {
         event.preventDefault();
         const { followupResponse, questionSelect, questions } = this.state;
-        // const { storyProps } = this.props.location.state
-        // console.log('working?', questionSelect)
-        // let followUpQuestionId = await axios.get('/userquestions/findid/' + questionSelect)
-        console.log('Whats in here', questionSelect)
         try {
-            const res = await axios.patch(`/userquestions/`,
+            const res = await axios.patch(`api/userquestions/`,
                 {
                     theUserQuestion: questions[questionSelect - 1],
                     followupResponse: followupResponse
                 })
-            console.log('The info', res)
         } catch (err) {
             console.log(err)
         }
@@ -259,8 +254,6 @@ class StoryPage extends Component {
             }
         );
 
-        console.log('Filtered followup questions', followUpPages);
-
         const userQuestions = (
             <Fragment>
                 <div className='chat' onClick={() => this.setResponseModalToOpen()}>
@@ -306,10 +299,6 @@ class StoryPage extends Component {
 
                         <div className="modal-info-form">
                             <div className="modal-input-fields">
-                                {/* <input type='text' name='username' className='modal-input' placeholder="Name2" onChange={this.handleInput}></input>
-                                <input type='text' name='useremail' className='modal-input' placeholder="Email2" onChange={this.handleInput}></input>
-                                <input type='text' name='userregion' className='modal-input' placeholder="Your Region2" onChange={this.handleInput}></input>
-                                <input type='text' name='usersuggestion' className='modal-input' placeholder="Simliar Story Link2" onChange={this.handleInput}></input> */}
                                 <select name='questionSelect' onChange={this.handleInput}>
                                     {questionOptions}
                                 </select>
@@ -497,7 +486,6 @@ class StoryPage extends Component {
 // export default StoryPage;
 
 const mapStateToProps = (state) => {
-    // console.log('check state:', state.auth.payload.username)
     return state.auth.payload
 }
 
@@ -506,10 +494,3 @@ export default withRouter(connect(
     mapStateToProps
 )(StoryPage));
 
-{/* <div className='inner-pages'>
-<div className='blog-container'>
-    <img className='avatar-picture' onError={this.addDefaultSrc}  src={userData.avatar} alt='img' />
-    <h1>{storyProps.p_username}</h1>
-    <p>{storyProps.caption}</p>
-</div>
-</div> */}

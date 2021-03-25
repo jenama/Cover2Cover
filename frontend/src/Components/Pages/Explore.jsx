@@ -15,7 +15,7 @@ class Explore extends React.Component {
 
     async componentDidMount() {
         try {
-            let blogs = await axios.get('/blog/all');
+            let blogs = await axios.get(`/api/blog/all`);
             this.setState({
                 data: blogs.data.payload
             });
@@ -33,40 +33,16 @@ class Explore extends React.Component {
         ev.target.src = 'https://ak.picdn.net/shutterstock/videos/1005609832/thumb/12.jpg?ip=x480'
     }
 
-    // showStory = (element) => {
-    //     console.log('pasted', element);
-    //     <Link to='/explore'> </Link>;
-    // }
-
-    render() {
-        // const filteredData = this.state.data.filter(
-        //     (element) => {
-        //         return element.caption.toLowerCase().indexOf(this.state.searchBar.toLowerCase()) !== -1;
-        //     }
-        // )
-
+   render() {
         const reducedData = this.state.data.filter(
             element => {
 
             return element.id % 2 === 0;
             }
         );
-
-        // console.log("render method data:", filteredData);
-        console.log("render method data OTHER:", reducedData);
-
         return (
             <div>
                 <Navbar />
-                {/* <div className='search-bar'>
-                        <input type="text"
-                            name="searchBar"
-                            id="searchBar"
-                            placeholder="Search"
-                            onChange={this.searchChange}
-                        />
-                    </div> */}
-
                 <div className='masonry-holder'>
                     {
                         reducedData.map((element, i) => {

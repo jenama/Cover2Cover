@@ -20,15 +20,12 @@ class Info extends React.Component{
     handleForm = async(e) => {
         e.preventDefault()
         const id = this.props.props.id
-        console.log('props', this.props.props.id)
-        console.log('id', id)
         const data = {
             updatedInfo: this.props.props.Info
         }
         try {
-            const updateUrl = `http://localhost:3100/users/${id}`
+            const updateUrl = `api/users/${id}`
             const editInfo = await axios.patch(updateUrl, data)
-            console.log('edit info', editInfo)
             this.setState({
                 updatedInfo: editInfo
             })

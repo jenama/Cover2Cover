@@ -18,7 +18,7 @@ class Post extends React.Component {
   }
 
   async componentDidMount () {
-    let questResponse = await axios.get('/questions')
+    let questResponse = await axios.get('api/questions')
 
     let questArr = []
 
@@ -48,14 +48,11 @@ class Post extends React.Component {
     event.preventDefault();
     const { cap } = this.state;
     const { currentUser } = this.props;
-    // console.log('User', currentUser)
     const data = new FormData();
     data.append('image', this.state.image);
     try {
-      const res = await axios.post('/upstream', data)
-      const post = await axios.post(`/blog/new`, { file_src: res.data.fileURL, caption: cap, p_username: currentUser })
-      console.log(res.data.fileURL)
-      // console.log(post)
+      const res = await axios.post('api/upstream', data)
+      const post = await axios.post(`api/blog/new`, { file_src: res.data.fileURL, caption: cap, p_username: currentUser })
     } catch (err) {
       console.log(err)
     }
